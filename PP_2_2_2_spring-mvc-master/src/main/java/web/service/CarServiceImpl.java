@@ -1,39 +1,24 @@
 package web.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import web.dao.DaoCar;
 import web.model.Car;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class CarServiceImpl implements CarService {
-    private static int CARS_COUNT;
-    private List<Car> cars;
+    private final DaoCar daoCar;
 
-    {
-        cars = new ArrayList<>();
-        cars.add(new Car(++CARS_COUNT, "Toyota", "Camry"));
-        cars.add(new Car(++CARS_COUNT, "Lada", "Kalina"));
-        cars.add(new Car(++CARS_COUNT, "Uaz", "Patriot"));
-        cars.add(new Car(++CARS_COUNT, "Opel", "Astra"));
-        cars.add(new Car(++CARS_COUNT, "KIA", "Spectra"));
+    public CarServiceImpl(DaoCar daoCar) {
+        this.daoCar = daoCar;
     }
 
     @Override
     public List<Car> countCars(int a) {
-        List<Car> carCopy = new ArrayList<>();
-        if (a == 0 || a > 5) {
-            return cars;
-        } else {
-            if (a < 5) {
-                for (int i = 0; i <= a - 1; i++) {
-                    carCopy.add(cars.get(i));
-                }
-            }
-            return carCopy;
+
+            return daoCar.countCars(a);
         }
     }
-}
 
 
