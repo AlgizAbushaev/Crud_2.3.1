@@ -17,8 +17,8 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> countCars(int a) {
 
-            return daoCar.countCars(a);
-        }
+        return daoCar.countCars(a);
     }
+}
 
 
