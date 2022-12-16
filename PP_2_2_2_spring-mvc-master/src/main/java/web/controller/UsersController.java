@@ -1,6 +1,5 @@
 package web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +14,6 @@ public class UsersController {
 
     private final UserService userService;
 
-    @Autowired
     public UsersController(UserService userService) {
         this.userService = userService;
     }
@@ -44,7 +42,7 @@ public class UsersController {
 
     }
 
-    
+
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id") long id) {
         userService.removeUser(id);
